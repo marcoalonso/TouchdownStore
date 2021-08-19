@@ -20,12 +20,21 @@ struct ContentView: View {
                     .padding(.bottom)
                     .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                     .background(Color.white)
-                    .shadow(color: Color.black.opacity(0.25), radius: 8, x: 0, y: 5)
+                    .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 5)
                 
-                Spacer()
                 
-                FooterView()
-                    .padding(.horizontal)
+                ScrollView(.vertical, showsIndicators: false, content: {
+                    VStack(spacing: 0){
+                        FeaturedTabView()
+                            .padding(.vertical, 20)
+                        
+                        CategoryGridView()
+                        
+                        
+                        FooterView()
+                            .padding(.horizontal)
+                    }//: Vstack
+                })//: Scroll
             }//: Vstack
             .background(colorBackground.ignoresSafeArea(.all, edges: .all))
         }//: Zstack
